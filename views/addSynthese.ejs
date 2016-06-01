@@ -1,0 +1,25 @@
+<div id="main" class="container">
+  <div id="jumbotron" class="jumbotron">
+    <form id="form">
+      <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center bottom-space">
+        <select id="alreadyExisting" class="form-control" selected="0">
+          <option value="">Choississez une synthese déjà existante...</option>
+          <% if (typeof synthese === "object") { %>
+            <% synthese.map(e => { %>
+              <option value="<%= e.id %>"><%= e.nom %></option>
+            <% }); %>
+          <% } %>
+        </select>
+        <label for="nomAction">Nom de l'action : </label>
+        <input id="nomAction" type="text" class="form-control" wipe no-space>
+        <label for="synthese_texte">Phrase à lire :</label>
+        <input id="synthese_texte" type="text" class="form-control" wipe>
+      </div>
+      <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center bottom-space">
+        <button id="add" type="button" class="btn btn-default btn-success">Ajouter la Synthèse</button>
+        <button id="delete" type="button" class="btn btn-default btn-danger">Supprimer la Synthèse</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="/js/addSynthese.js"></script>

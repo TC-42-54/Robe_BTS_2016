@@ -1,0 +1,31 @@
+{
+  "name": "ServeurRobe",
+  "version": "0.0.1",
+  "description": "PROJET WEB BTS",
+  "main": "app.js",
+  "scripts": {
+    "start": "sudo node app.js 2>> nodelog"
+  },
+  "author": "Thomas CHEZIERES",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "body-parser": "^1.15.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.4.1",
+    "ejs-layouts": "0.0.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "fs-extra": "^0.26.5",
+    "http": "0.0.0",
+    "method-override": "^2.3.5",
+    "mysql": "^2.10.2",
+    "open": "0.0.5",
+    "optimist": "^0.6.1",
+    "path": "^0.12.7",
+    "promise": "^7.1.1",
+    "prompt": "^1.0.0",
+    "ws": "^1.1.0"
+  }
+}

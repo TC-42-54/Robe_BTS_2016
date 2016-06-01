@@ -1,0 +1,19 @@
+<div id="main" class="row" style="border:0px solid #ac2925;">
+  <h1 class="text-center"><%= title %></h1>
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-lg-offset-3">
+		<div id="webcam" class="rounded-video center-block"></div>
+	</div>
+</div>
+<script src="/js/log.js"></script>
+<script src="/js/libCam.js"></script>
+<script src="/js/webcam.js"></script>
+
+<% if (typeof additionnalData === "object") { %>
+  <% if (additionnalData.action && additionnalData.message) { %>
+    <script type="text/javascript">
+      window.onload = function() {
+        document.getElementById('main')["<%= additionnalData.action %>"]("<%= additionnalData.message %>");
+      };
+    </script>
+  <% } %>
+<% } %>

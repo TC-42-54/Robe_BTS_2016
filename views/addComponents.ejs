@@ -1,0 +1,52 @@
+<div id="main" class="container">
+    <div id="jumbotron" class="jumbotron">
+      <form id="form" class="form-inline">
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center bottom-space">
+          <select id="update" class="form-control" selected="0">
+            <option value="">Choisir un composant existant...</option>
+            <% if (typeof components === "object") { %>
+              <% components.map(e => { %>
+                <option value="<%= e.id %>"><%= e.nom %></option>
+              <% }); %>
+            <% } %>
+          </select>
+          <strong>OU</strong>
+          <input id="create" class="form-control" value="" placeholder="Créez en un..." maxlength="50" wipe>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center bottom-space">
+          <label for="gpio">Adresse/Pin GPIO :</label>
+          <input id="gpio" placeholder="Adresse du composant" class="form-control space" maxlength="4" wipe>
+          <label for="io">Émetteur/Récépteur :</label>
+          <select id="io" class="form-control space" selected="0">
+            <option value="out">émetteur</option>
+            <option value="in">récépteur</option>
+          </select>
+          <label for="type">Type de composant :</label>
+          <select id="type" class="form-control space" selected="0">
+            <option value="val">Récupérer une valeur</option>
+            <option value="tor">Composant de type tout ou rien</option>
+          </select>
+        </div>
+        <div id="i2c" class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center bottom-space hide">
+          <label for="init_reg">Registre d'initialisation</label>
+          <input id="init_reg" class="form-control space i2c" placeholder="Adresse d'initialisation" maxlength="4" wipe>
+          <label for="init_val">Valeur d'initialisation :</label>
+          <input id="init_val" class="form-control space" placeholder="Valeur d'initialisation" maxlength="4" wipe>
+          <label for="read_reg">Registre de lecture :</label>
+          <input id="read_reg" class="form-control space i2c" placeholder="Adresse de lecture" maxlength="4" wipe>
+        </div>
+        <div id="forInput" class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center hide">
+          <label for="formule">Formule (pour interpréter valeur du capteur) : </label>
+          <input loadedValue="Valeur composant" class="form-control" disabled>
+          <input id="formule" class="form-control" placeholder="Formule de lecture" wipe>
+          <label for="unite">Unité : </label>
+          <input id="unite" class="form-control" placeholder="Unité (cm, m, min, s)" wipe>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <button id="but" type="button" class="btn btn-default btn-success center-block form-control" >Ajouter le composant</button>
+            <button id="delete" type="button" class="btn btn-default btn-danger center-block form-control" >Supprimer le composant</button>
+        </div>
+      </form>
+    </div>
+    <script src="/js/addComponents.js"></script>
+</div>
