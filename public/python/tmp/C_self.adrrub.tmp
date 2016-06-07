@@ -1,0 +1,10 @@
+class C_Ruban_Led():
+  def __init__(self, addr):
+    GPIO.setmode(GPIO.BOARD)
+    self.adrrub = addr
+    GPIO.setup(adrComp, GPIO.OUT, initial=GPIO.LOW)
+  def setState(self):
+    GPIO.output(self.adrrub, not GPIO.input(self.adrrub))
+  def getState(self):
+    return(GPIO.input(self.adrrub))
+

@@ -12,7 +12,7 @@
   <% if (additionnalData.action && additionnalData.message) { %>
     <script type="text/javascript">
       window.onload = function() {
-        document.getElementById('main')["<%= additionnalData.action %>"]("<%= additionnalData.message %>");
+        document.getElementByid('main')["<%= additionnalData.action %>"]("<%= additionnalData.message %>");
       };
     </script>
   <% } %>

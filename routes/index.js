@@ -10,7 +10,7 @@ module.exports = function(app) {
       if (components) {
         content.data.components = components.map(e => {
           return ({
-            id : e.id,
+            _id : e._id,
             nom : e.nom
           });
         });
@@ -33,7 +33,7 @@ module.exports = function(app) {
       if (results) {
         content.data.synthese = results.map(e => {
           return ({
-            id : e.id,
+            _id : e._id,
             nom : e.nomAction
           });
         });

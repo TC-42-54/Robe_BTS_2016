@@ -6,7 +6,7 @@
             <option value="">Choisir un composant existant...</option>
             <% if (typeof components === "object") { %>
               <% components.map(e => { %>
-                <option value="<%= e.id %>"><%= e.nom %></option>
+                <option value="<%= e._id %>"><%= e.nom %></option>
               <% }); %>
             <% } %>
           </select>

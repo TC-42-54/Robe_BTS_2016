@@ -68,10 +68,8 @@ var verifyAddress = (evt, ret) => {
     isI2C = false;
     i2c.addClass("hide");
     if (!isNaN(tmp)) {
-      if (typeof ret === "undefined") {
-        var data = Msg("addrUsed", tmp);
-        ws.send(data);
-      } else {
+      vAddr = true;
+      if (typeof ret !== "undefined") {
         return (true);
       }
     } else {
@@ -133,6 +131,7 @@ button.addEventListener("click", () => {
   }
   toTest.updating = updating;
   toTest.gpio = address.value;
+  console.log(toTest);
   if (vName && vAddr) {
     ws.send(Msg("compBeforeSave", toTest));
   } else if (!updating) {
@@ -140,7 +139,8 @@ button.addEventListener("click", () => {
     verifyName();
   } else if (updating) {
     if (verifyAddress(null, true)) {
-      var data = Msg("addrUsed", { gpio : address.value, nom : update.options[update.selectedIndex].innerHTML, updating : true });
+      var data = Msg("updateComp", { gpio : address.value, nom : update.options[update.selectedIndex].innerHTML, updating : true });
+      ws.send(data);
     }
   }
 });
@@ -156,7 +156,7 @@ del.addEventListener("click", () => {
 update.addEventListener("change", () => {
   if (update.value != "") {
     var selectedOption = update.options[update.selectedIndex];
-    var toLoad = { id : selectedOption.value, nom : selectedOption.innerHTML };
+    var toLoad = { _id : selectedOption.value, nom : selectedOption.innerHTML };
     console.log(toLoad);
     ws.send(Msg("loadComp", toLoad));
   }
@@ -234,7 +234,7 @@ Signals.compSaved = (s, data) => {
   console.log(data);
   if (data.saved) {
     var newOption = document.createElement("OPTION");
-    newOption.value = data.id;
+    newOption.value = data._id;
     newOption.innerHTML = data.name;
     update.add(newOption);
     main.successMessage("Le composant " + data.name + " à bien été enregistré.");
@@ -250,7 +250,7 @@ Signals.loadedComp = (s, loadedData) => {
   for (attr in loadedData) {
     var ctr = 0;
     var there = false;
-    if ((attr !== "nom") && (attr !== "loaded") && (attr !== "id")) {
+    if ((attr !== "nom") && (attr !== "loaded") && (attr !== "_id")) {
       var elem = document.getElementById(attr);
       if (elem.nodeName === "INPUT") {
         elem.value = loadedData[attr];

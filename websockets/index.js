@@ -154,15 +154,8 @@ module.exports = function(server) {
   };
 
   Signals.updateComp = (s, update) => {
-    Components.addNewRow(update, true)
-    .then(results => {
-      if (results) {
-        log(results);
-        s.send(Msg("compSaved"), { name : save.nom, saved : true });
-      } else {
-        s.send(Msg("compSaved"), { name : save.nom, saved : false });
-      }
-    });
+    log(update);
+    //réponse :  s.send(Msg("compSaved"), { name : save.nom, saved : false });
   };
 
   Signals.loadComp = (s, toLoad) => {
