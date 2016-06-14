@@ -189,8 +189,8 @@ module.exports = function(server) {
 
   Signals.deleteSynthese = (s, data) => {
     log(data);
-    if ((data.id) && (!isNaN(data.id))) {
-      Actions.deleteRow({ id : data.id, type : "synthese" })
+    if ((data._id) && (!isNaN(data._id))) {
+      Actions.deleteRow({ _id : data._id, type : "synthese" })
       .then(returned => {
         if (returned) {
             s.send(Msg("deletedSynthese", { name : data.name,  deleted : true }));

@@ -30,7 +30,7 @@ add.addEventListener("click", () => {
 
 del.addEventListener("click", () => {
   if (alEx.value != "") {
-    ws.send(Msg("deleteSynthese", { id : alEx.value, name : alEx.options[alEx.selectedIndex].innerHTML }));
+    ws.send(Msg("deleteSynthese", { _id : alEx.value, name : alEx.options[alEx.selectedIndex].innerHTML }));
   } else {
     main.errorMessage("Veuillez sélectionner un composant pour le supprimer.");
   }
@@ -48,7 +48,7 @@ Signals.freeActionName = (s, data) => {
 Signals.addedSynthese = (s, data) => {
   if (data.saved) {
     var newOption = document.createElement("OPTION");
-    newOption.value = data.id;
+    newOption.value = data._id;
     newOption.innerHTML = data.nomAction;
     alEx.add(newOption);
     main.successMessage("La synthèse " + data.nomAction + " à bien été ajoutée.");
